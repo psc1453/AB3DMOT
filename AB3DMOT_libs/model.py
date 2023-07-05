@@ -44,7 +44,7 @@ class AB3DMOT(object):
 	def get_param(self, cfg, cat):
 		# get parameters for each dataset
 
-		if cfg.dataset == 'KITTI':
+		if cfg.dataset == 'KITTI' or 'ZTE':
 			if cfg.det_name == 'pvrcnn':				# tuned for PV-RCNN detections
 				if cat == 'Car': 			algm, metric, thres, min_hits, max_age = 'hungar', 'giou_3d', -0.2, 3, 2
 				elif cat == 'Pedestrian': 	algm, metric, thres, min_hits, max_age = 'greedy', 'giou_3d', -0.4, 1, 4 		
@@ -53,6 +53,11 @@ class AB3DMOT(object):
 			elif cfg.det_name == 'pointrcnn':			# tuned for PointRCNN detections
 				if cat == 'Car': 			algm, metric, thres, min_hits, max_age = 'hungar', 'giou_3d', -0.2, 3, 2
 				elif cat == 'Pedestrian': 	algm, metric, thres, min_hits, max_age = 'greedy', 'giou_3d', -0.4, 1, 4 		
+				elif cat == 'Cyclist': 		algm, metric, thres, min_hits, max_age = 'hungar', 'dist_3d', 2, 3, 4
+				else: assert False, 'error'
+			elif cfg.det_name == 'PointPainting':			# tuned for PointPainting detections
+				if cat == 'Car': 			algm, metric, thres, min_hits, max_age = 'hungar', 'giou_3d', -0.2, 3, 2
+				elif cat == 'Pedestrian': 	algm, metric, thres, min_hits, max_age = 'greedy', 'giou_3d', -0.4, 1, 4
 				elif cat == 'Cyclist': 		algm, metric, thres, min_hits, max_age = 'hungar', 'dist_3d', 2, 3, 4
 				else: assert False, 'error'
 			elif cfg.det_name == 'deprecated':			

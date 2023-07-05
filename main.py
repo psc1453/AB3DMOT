@@ -12,9 +12,9 @@ from xinshuo_miscellaneous import get_timestring, print_log
 
 def parse_args():
     parser = argparse.ArgumentParser(description='AB3DMOT')
-    parser.add_argument('--dataset', type=str, default='nuScenes', help='KITTI, nuScenes')
-    parser.add_argument('--split', type=str, default='', help='train, val, test')
-    parser.add_argument('--det_name', type=str, default='', help='pointrcnn')
+    parser.add_argument('--dataset', type=str, default='ZTE', help='KITTI, nuScenes')
+    parser.add_argument('--split', type=str, default='test', help='train, val, test')
+    parser.add_argument('--det_name', type=str, default='PointPainting', help='pointrcnn')
     args = parser.parse_args()
     return args
 
@@ -45,7 +45,7 @@ def main_per_cat(cfg, cat, log, ID_start):
 			get_saving_dir(eval_dir_dict, seq_name, save_dir, cfg.num_hypo)	
 
 		# initialize tracker
-		tracker, frame_list = initialize(cfg, trk_root, save_dir, subfolder, seq_name, cat, ID_start, hw, log)
+		tracker, frame_list = initialize(cfg, trk_root, save_dir, subfolder, seq_name, cat, ID_start, hw, log, seq_file)
 
 		# loop over frame
 		min_frame, max_frame = int(frame_list[0]), int(frame_list[-1])
