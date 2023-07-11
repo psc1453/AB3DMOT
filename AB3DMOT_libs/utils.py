@@ -28,7 +28,7 @@ def get_subfolder_seq(dataset, split):
 	# dataset setting
 	file_path = os.path.dirname(os.path.realpath(__file__))
 	if dataset == 'KITTI':				# KITTI
-		det_id2str = {1: 'Pedestrian', 2: 'Car', 3: 'Cyclist'}
+		det_id2str = {1: 'Car', 2: 'Pedestrian', 3: 'Cyclist'}
 		
 		if split == 'val': subfolder = 'training' 
 		elif split == 'test': subfolder = 'testing' 
@@ -43,7 +43,7 @@ def get_subfolder_seq(dataset, split):
 		data_root = os.path.join(file_path, '../data/KITTI') 		# path containing the KITTI root
 
 	elif dataset == 'ZTE':
-		det_id2str = {1: 'Pedestrian', 2: 'Car', 3: 'Cyclist'}
+		det_id2str = {1: 'Car', 2: 'Pedestrian', 3: 'Cyclist'}
 
 		if split == 'val':
 			subfolder = 'training'
